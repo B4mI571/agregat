@@ -910,8 +910,16 @@ footer {
   border: 2px solid var(--accent);
   border-radius: 12px;
   padding: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   box-shadow: 0 8px 24px rgba(245,158,11,0.1);
+}
+.calc-manual-hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 16px 0 20px;
+  letter-spacing: 0.3px;
 }
 .calc-result-row {
   display: grid;
@@ -973,22 +981,44 @@ footer {
   color: var(--danger);
 }
 .calc-presets {
+  background: var(--bg-card);
+  border: 1px dashed rgba(245,158,11,0.4);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
 }
 .calc-presets-label {
   width: 100%;
-  color: var(--text-muted);
+  color: var(--text-primary);
   font-size: 14px;
+  font-weight: 600;
   margin-bottom: 4px;
 }
-.calc-preset { font-size: 13px !important; padding: 8px 14px !important; }
+.calc-preset { font-size: 14px !important; padding: 10px 16px !important; }
+.calc-preset[data-preset="clear"] {
+  font-size: 12px !important;
+  padding: 8px 12px !important;
+  opacity: 0.7;
+}
 @media (max-width: 900px) { .calc-grid { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .calc-result-row { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 600px) {
+  .calc-result-row { grid-template-columns: 1fr; gap: 16px; }
+  .calc-result {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,158,11,0.4);
+  }
+  .calc-result-value { font-size: 32px; }
+  .calc-presets { padding: 16px 12px; }
+  .calc-preset { font-size: 13px !important; padding: 10px 12px !important; flex: 1 1 calc(50% - 10px); }
+}
 
 /* --- FAQ --- */
 .faq-section { background: linear-gradient(180deg, #111215 0%, var(--bg-dark) 100%); }
@@ -1170,8 +1200,8 @@ footer {
     </div>
     <div class="feature-card">
       <div class="feature-icon">⏱️</div>
-      <h3>Praca ciągła do 10h</h3>
-      <p>15-litrowy zbiornik daje 10 godzin pracy przy 75% obciążenia. Wymuszony obieg powietrza pozwala pracować non-stop — tankujesz i jedziesz dalej, dzień, dwa, tydzień bez przerwy.</p>
+      <h3>10h pracy + ciszej niż diesel</h3>
+      <p>15-litrowy zbiornik = 10 godzin przy 75% obciążenia. Silnik benzynowy 4-suw daje <strong>~70 dB z 7 m</strong> — wyraźnie ciszej niż agregaty dieslowskie tej mocy (typowo 80–95 dB). Wymuszone chłodzenie pozwala pracować non-stop bez przegrzania.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔌</div>
@@ -1251,9 +1281,34 @@ footer {
 <section class="section calculator-section" id="kalkulator">
   <div class="section-header">
     <h2>CO REALNIE PODŁĄCZYSZ?</h2>
-    <p>Awaria prądu, plac budowy, weekend na działce — sprawdź konkretnie ile sprzętu zasilisz na raz. <strong>3 000W mocy ciągłej, 3 500W szczytowo</strong> na rozruch silników (lodówki, pompy, sprężarki).</p>
+    <p>Awaria prądu, plac budowy, weekend na działce — <strong>kliknij scenariusz</strong> poniżej albo zaznacz urządzenia ręcznie. Pokaże ile mocy zostaje. <strong>3 000W ciągłej, 3 500W szczytowo</strong> na rozruch silników.</p>
   </div>
   <div class="calc-wrap">
+    <div class="calc-presets">
+      <p class="calc-presets-label">Szybkie scenariusze — kliknij i sprawdź:</p>
+      <button class="btn btn-secondary calc-preset" data-preset="house" type="button">🏠 Awaryjne zasilanie domu</button>
+      <button class="btn btn-secondary calc-preset" data-preset="construction" type="button">🔧 Plac budowy</button>
+      <button class="btn btn-secondary calc-preset" data-preset="cottage" type="button">🏡 Działka weekend</button>
+      <button class="btn btn-secondary calc-preset" data-preset="clear" type="button">🧹 Wyczyść</button>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-row">
+        <div class="calc-result-block">
+          <div class="calc-result-label">Pobór ciągły</div>
+          <div class="calc-result-value" id="calc-running">0 W</div>
+          <div class="calc-result-bar"><div class="calc-result-bar-fill" id="calc-running-bar"></div></div>
+          <div class="calc-result-cap">z 3 000 W mocy ciągłej</div>
+        </div>
+        <div class="calc-result-block">
+          <div class="calc-result-label">Skok rozruchowy</div>
+          <div class="calc-result-value" id="calc-startup">0 W</div>
+          <div class="calc-result-bar"><div class="calc-result-bar-fill" id="calc-startup-bar"></div></div>
+          <div class="calc-result-cap">z 3 500 W mocy szczytowej</div>
+        </div>
+      </div>
+      <div class="calc-status" id="calc-status">Zaznacz urządzenia, żeby zobaczyć obciążenie agregatu.</div>
+    </div>
+    <p class="calc-manual-hint">↓ Albo wybierz urządzenia ręcznie:</p>
     <div class="calc-grid">
       <div class="calc-category">
         <h3>🏠 Awaryjne zasilanie domu</h3>
@@ -1336,30 +1391,6 @@ footer {
           <span>Sprzęt audio <small>(80W)</small></span>
         </label>
       </div>
-    </div>
-    <div class="calc-result">
-      <div class="calc-result-row">
-        <div class="calc-result-block">
-          <div class="calc-result-label">Pobór ciągły</div>
-          <div class="calc-result-value" id="calc-running">0 W</div>
-          <div class="calc-result-bar"><div class="calc-result-bar-fill" id="calc-running-bar"></div></div>
-          <div class="calc-result-cap">z 3 000 W mocy ciągłej</div>
-        </div>
-        <div class="calc-result-block">
-          <div class="calc-result-label">Skok rozruchowy</div>
-          <div class="calc-result-value" id="calc-startup">0 W</div>
-          <div class="calc-result-bar"><div class="calc-result-bar-fill" id="calc-startup-bar"></div></div>
-          <div class="calc-result-cap">z 3 500 W mocy szczytowej</div>
-        </div>
-      </div>
-      <div class="calc-status" id="calc-status">Zaznacz urządzenia, żeby zobaczyć obciążenie agregatu.</div>
-    </div>
-    <div class="calc-presets">
-      <p class="calc-presets-label">Szybkie scenariusze:</p>
-      <button class="btn btn-secondary calc-preset" data-preset="house" type="button">🏠 Awaryjne zasilanie domu</button>
-      <button class="btn btn-secondary calc-preset" data-preset="construction" type="button">🔧 Plac budowy</button>
-      <button class="btn btn-secondary calc-preset" data-preset="cottage" type="button">🏡 Działka weekend</button>
-      <button class="btn btn-secondary calc-preset" data-preset="clear" type="button">🧹 Wyczyść</button>
     </div>
   </div>
 </section>
@@ -1555,7 +1586,7 @@ footer {
     </details>
     <details class="faq-item">
       <summary>Czy będzie głośny dla sąsiada?</summary>
-      <p>To agregat z silnikiem spalinowym — nie inwerter typu "cichy 50 dB". Rzeczywisty hałas to <strong>~70 dB z 7 metrów</strong> (porównywalny z odkurzaczem). Postaw 5–10 metrów od okien sąsiada, na podłożu absorbującym (trawa, gruba mata gumowa, paleta) — będzie OK. Do nocnej pracy w środku osiedla raczej się nie nadaje.</p>
+      <p>Hałas to ok. <strong>70 dB z 7 metrów</strong> — porównywalne z odkurzaczem. To <strong>wyraźnie ciszej niż agregaty dieslowskie</strong> tej samej mocy (typowo 80–95 dB), bo silnik benzynowy 4-suw pracuje równiej i bez charakterystycznego "klepania" diesla. To nie jest jednak inwerter cichy 50 dB. Postaw 5–10 metrów od okien sąsiada, na podłożu absorbującym (trawa, gruba mata gumowa, paleta) — będzie OK. Do nocnej pracy w środku osiedla raczej się nie nadaje.</p>
     </details>
     <details class="faq-item">
       <summary>Czy mogę go zostawić w garażu na zimę?</summary>
@@ -1711,8 +1742,11 @@ footer {
         if (cb) cb.checked = true;
       });
       update();
-      const calc = document.getElementById('kalkulator');
-      if (calc) calc.scrollIntoView({behavior: 'smooth', block: 'start'});
+      const result = document.querySelector('.calc-result');
+      if (result) {
+        const isMobile = window.innerWidth <= 600;
+        result.scrollIntoView({behavior: 'smooth', block: isMobile ? 'start' : 'center'});
+      }
     });
   });
   update();
