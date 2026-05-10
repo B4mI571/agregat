@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WYPRZEDAŻ LIKWIDACYJNA — Agregat Pro-Gen 3500 | 3,5kW za 899 zł</title>
-<meta name="description" content="Likwidacja magazynu! Agregat prądotwórczy Pro-Gen 3500INV+ES – 3,5kW, miedziane uzwojenie, AVR, e-start. Fabrycznie nowy, FV VAT 23%. Ostatnie 50 sztuk po 899 zł. Wysyłka kurierem 24h.">
+<meta name="description" content="Likwidacja magazynu! Agregat prądotwórczy Pro-Gen 3500INV+ES – 3,5kW, miedziane uzwojenie, AVR, mobilny na kółkach. Fabrycznie nowy, faktura VAT dla firm. Ostatnie 50 sztuk po 899 zł. Wysyłka 48h.">
 <meta property="og:title" content="WYPRZEDAŻ — Agregat 3,5kW za 899 zł | Likwidacja magazynu">
-<meta property="og:description" content="Ostatnie 50 sztuk fabrycznie nowych agregatów Pro-Gen 3500. Miedziane uzwojenie, AVR, e-start. FV VAT 23%. Wysyłka 24h.">
-<meta property="og:image" content="https://ireland.apollo.olxcdn.com:443/v1/files/lan4rl6vlc6p1-PL/image;s=2000x1336">
+<meta property="og:description" content="Ostatnie 50 sztuk fabrycznie nowych agregatów Pro-Gen 3500. Miedziane uzwojenie, AVR, kółka transportowe. Faktura VAT dla firm. Wysyłka 48h.">
+<meta property="og:image" content="hero-studio.jpg">
 <meta property="og:type" content="product">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
@@ -236,6 +236,127 @@ body {
   color: var(--accent);
 }
 
+/* --- PRICING --- */
+.pricing-section {
+  background: linear-gradient(180deg, #111215 0%, var(--bg-dark) 100%);
+}
+.pricing-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.pricing-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.pricing-card:hover {
+  border-color: rgba(245,158,11,0.3);
+  transform: translateY(-3px);
+}
+.pricing-card-featured {
+  background: linear-gradient(145deg, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.02) 100%);
+  border: 2px solid var(--accent);
+  box-shadow: 0 12px 40px rgba(245,158,11,0.15);
+}
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding: 4px 16px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pricing-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.pricing-amount-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.pricing-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--text-primary);
+}
+.pricing-card-featured .pricing-amount {
+  color: var(--accent);
+}
+.pricing-amount .zl {
+  font-size: 28px;
+  margin-left: 4px;
+  color: var(--text-secondary);
+}
+.pricing-card-featured .pricing-amount .zl {
+  color: var(--accent);
+}
+.pricing-unit {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.pricing-features {
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+  flex: 1;
+}
+.pricing-features li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+.pricing-shipping {
+  color: var(--text-muted) !important;
+  font-size: 13px !important;
+}
+.pricing-shipping-free {
+  color: var(--success) !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+.pricing-saving {
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  font-style: italic;
+}
+.pricing-cta {
+  margin-top: auto;
+}
+@media (max-width: 700px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-amount { font-size: 52px; }
+}
+
 /* --- MID-PAGE CTA --- */
 .mid-cta {
   background: rgba(245,158,11,0.06);
@@ -387,8 +508,9 @@ body {
 }
 .usecase-img {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 .usecase-featured .usecase-content {
@@ -580,17 +702,17 @@ table.comparison tbody td:first-child {
   margin-top: 8px;
   letter-spacing: 0.3px;
 }
-.btn-messenger {
-  background: #0084FF;
+.btn-whatsapp {
+  background: #25D366;
   color: #fff;
   font-size: 17px;
   padding: 16px 36px;
   border-radius: 10px;
 }
-.btn-messenger:hover {
-  background: #0099ff;
+.btn-whatsapp:hover {
+  background: #1ebe57;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,132,255,0.3);
+  box-shadow: 0 8px 24px rgba(37,211,102,0.3);
 }
 .cta-steps {
   display: flex;
@@ -737,13 +859,15 @@ footer {
       <h1>AGREGAT<br>PRĄDOTWÓRCZY<br><span class="highlight">PRO-GEN 3500</span></h1>
       <p class="hero-desc">
         Likwidujemy magazyn — 50 fabrycznie nowych agregatów 3,5kW w cenach hurtowych. 
-        Miedziane uzwojenie, AVR, elektryczny start. Jak się rozejdą — nie będzie dostawy.
+        Miedziane uzwojenie, AVR, kółka transportowe. Jak się rozejdą — nie będzie dostawy.
       </p>
       <div class="hero-price-block">
         <div class="hero-price">899 ZŁ</div>
         <div class="hero-price-info">
           brutto z VAT 23%<br>
           <strong>730,89 zł netto</strong><br>
+          <span style="color: var(--text-muted); font-size: 12px;">+ wysyłka od 50 zł</span><br>
+          <span style="color: var(--success); font-size: 12px; font-weight: 700;">🚚 3+ szt: 850 zł/szt + dostawa GRATIS</span><br>
           <span style="color: var(--accent); font-size: 12px; font-weight: 600;">Porównywalne modele: 1 100–1 300 zł</span>
         </div>
       </div>
@@ -755,7 +879,7 @@ footer {
     <div class="hero-image">
       <div class="img-wrapper">
         <div class="img-badge" style="background: var(--danger);">Zostało: 50 szt.</div>
-        <img src="hero-studio.png" alt="Agregat Prądotwórczy Pro-Gen 3500INV+ES">
+        <img src="hero-studio.jpg" alt="Agregat Prądotwórczy Pro-Gen 3500INV+ES">
       </div>
     </div>
   </div>
@@ -801,9 +925,9 @@ footer {
       <p>Automatyczna regulacja napięcia chroni Twoje urządzenia przed uszkodzeniem. Bezpiecznie podłączysz sterownik pieca CO, laptop, lodówkę czy serwer.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🔑</div>
-      <h3>Elektryczny start</h3>
-      <p>Jedno wciśnięcie przycisku i gotowe. Koniec z szarpaniem za linkę — wygoda dla każdego, niezależnie od tężyzny fizycznej.</p>
+      <div class="feature-icon">🛞</div>
+      <h3>Łatwy transport</h3>
+      <p>Solidne kółka i metalowa rączka transportowa — przerzucisz agregat po placu budowy, załadujesz do bagażnika, odstawisz na działce. 30 sekund i jest gdzie potrzebujesz.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⏱️</div>
@@ -817,8 +941,8 @@ footer {
     </div>
     <div class="feature-card">
       <div class="feature-icon">🧾</div>
-      <h3>FV VAT 23% w cenie</h3>
-      <p>Do każdego agregatu wystawiamy fakturę VAT. Dla firm — odlicz VAT i wrzuć w koszty. Cena netto: 730,89 zł.</p>
+      <h3>Faktura VAT dla firm</h3>
+      <p>Kupujesz na firmę? Wystawiamy fakturę VAT 23% — odliczysz VAT i wrzucisz w koszty. Cena netto: 730,89 zł. Osoba prywatna otrzymuje fakturę imienną.</p>
     </div>
   </div>
 </section>
@@ -839,34 +963,79 @@ footer {
   </div>
   <div class="usecases-grid">
     <div class="usecase-card usecase-featured">
-      <img src="lifestyle-construction.png" alt="Agregat na budowie" class="usecase-img">
+      <img src="lifestyle-construction.jpg" alt="Agregat na budowie" class="usecase-img">
       <div class="usecase-content">
         <h3>🏗️ Budowlańcy i ekipy remontowe</h3>
         <p>Zasilisz wiertarkę, szlifierkę, pilarkę i oświetlenie placu budowy. Jedna faza 230V, pełna moc z każdego gniazdka — bez dzielenia mocy na trzy fazy.</p>
       </div>
     </div>
     <div class="usecase-card usecase-featured">
-      <img src="lifestyle-cottage.png" alt="Agregat na działce" class="usecase-img">
+      <img src="lifestyle-cottage.jpg" alt="Agregat na działce" class="usecase-img">
       <div class="usecase-content">
         <h3>🏡 Działkowcy i właściciele domków</h3>
         <p>Nie masz prądu na działce? Pro-Gen zapewni energię na cały dzień. Podłącz pompę, narzędzia ogrodowe, oświetlenie — i nie martw się o gniazdko.</p>
       </div>
     </div>
-    <div class="usecase-card">
-      <div class="usecase-emoji">🏠</div>
-      <div>
-        <h3>Właściciele domów jednorodzinnych</h3>
+    <div class="usecase-card usecase-featured">
+      <img src="lifestyle-house.jpg" alt="Agregat przy domu jednorodzinnym" class="usecase-img">
+      <div class="usecase-content">
+        <h3>🏠 Właściciele domów jednorodzinnych</h3>
         <p>Awaryjne zasilanie na wypadek przerwy w dostawie prądu. Podtrzyma instalację CO, lodówkę, router, oświetlenie — spokojnie przetrwasz każdą burzę.</p>
       </div>
     </div>
-    <div class="usecase-card">
-      <div class="usecase-emoji">🎪</div>
-      <div>
-        <h3>Eventy, food trucki, camping</h3>
+    <div class="usecase-card usecase-featured">
+      <img src="lifestyle-event.jpg" alt="Agregat przy food trucku" class="usecase-img">
+      <div class="usecase-content">
+        <h3>🎪 Eventy, food trucki, camping</h3>
         <p>Mobilne zasilanie na imprezy plenerowe, kamping, targi. Kompaktowy, na kółkach, gotowy do transportu. Ideał na sezon letni 2026.</p>
       </div>
     </div>
   </div>
+</section>
+
+<!-- PRICING TIERS -->
+<section class="section pricing-section">
+  <div class="section-header">
+    <h2>KUPUJESZ WIĘCEJ — PŁACISZ MNIEJ</h2>
+    <p>Specjalna oferta dla firm budowlanych, sklepów narzędziowych i wynajmu sprzętu — kupujesz minimum 3 sztuki, oszczędzasz na każdej</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-label">Detal</div>
+      <div class="pricing-amount-row">
+        <div class="pricing-amount">899<span class="zl">zł</span></div>
+        <div class="pricing-unit">brutto<br>za sztukę</div>
+      </div>
+      <ul class="pricing-features">
+        <li>✓ 1–2 sztuki</li>
+        <li>✓ Faktura VAT</li>
+        <li class="pricing-shipping">+ wysyłka od 50 zł</li>
+      </ul>
+      <div class="pricing-cta">
+        <a href="#zamow" class="btn btn-secondary" style="width: 100%; justify-content: center;">Zamów 1–2 szt.</a>
+      </div>
+    </div>
+    <div class="pricing-card pricing-card-featured">
+      <div class="pricing-badge">🔥 NAJLEPSZY DEAL</div>
+      <div class="pricing-label">Hurt</div>
+      <div class="pricing-amount-row">
+        <div class="pricing-amount">850<span class="zl">zł</span></div>
+        <div class="pricing-unit">brutto<br>za sztukę</div>
+      </div>
+      <ul class="pricing-features">
+        <li>✓ Od 3 sztuk</li>
+        <li>✓ Faktura VAT</li>
+        <li class="pricing-shipping pricing-shipping-free">✓ Dostawa GRATIS</li>
+        <li class="pricing-saving">Oszczędzasz 50 zł na każdej sztuce + dostawa</li>
+      </ul>
+      <div class="pricing-cta">
+        <a href="#zamow" class="btn btn-primary" style="width: 100%; justify-content: center;">Zamów 3+ szt.</a>
+      </div>
+    </div>
+  </div>
+  <p style="text-align: center; color: var(--text-muted); font-size: 13px; margin-top: 24px;">
+    Zamawiasz 10+ sztuk? Skontaktuj się — przygotujemy indywidualną ofertę.
+  </p>
 </section>
 
 <!-- COMPARISON -->
@@ -909,12 +1078,6 @@ footer {
           <td>✓ Tak</td>
           <td>✓ Tak</td>
           <td>✓ Tak</td>
-        </tr>
-        <tr>
-          <td>E-Start</td>
-          <td>✓ Tak</td>
-          <td>✗ Nie</td>
-          <td>✗ Nie</td>
         </tr>
         <tr>
           <td>Zbiornik</td>
@@ -964,9 +1127,12 @@ footer {
     <div class="spec-item"><span class="label">Zbiornik</span><span class="value">15 litrów</span></div>
     <div class="spec-item"><span class="label">Czas pracy (75%)</span><span class="value">10 godzin</span></div>
     <div class="spec-item"><span class="label">Uzwojenie</span><span class="value">100% Miedź</span></div>
-    <div class="spec-item"><span class="label">Start</span><span class="value">Elektryczny + ręczny</span></div>
+    <div class="spec-item"><span class="label">Start</span><span class="value">Ręczny (linka)*</span></div>
     <div class="spec-item"><span class="label">Stabilizacja</span><span class="value">AVR</span></div>
   </div>
+  <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 16px; max-width: 800px; margin-left: auto; margin-right: auto; font-style: italic;">
+    * Model fabrycznie wyposażony jest również w funkcję rozruchu elektrycznego — wymaga akumulatora 12V (do dokupienia osobno).
+  </p>
 </section>
 
 <!-- INCLUDES -->
@@ -990,31 +1156,31 @@ footer {
 <section class="cta-section" id="zamow">
   <div class="cta-box">
     <h2>ZOSTAŁO <span style="color: var(--danger);">50 SZTUK</span> — ZAMÓW ZANIM SIĘ ROZEJDĄ</h2>
-    <p>Napisz na Messengerze — odpowiemy w kilka minut. To wyprzedaż likwidacyjna, po wyczerpaniu zapasu nie będzie kolejnej dostawy.</p>
+    <p>Napisz na WhatsAppie — odpowiemy w kilka minut. To wyprzedaż likwidacyjna, po wyczerpaniu zapasu nie będzie kolejnej dostawy.</p>
     <div class="cta-contact">
-      <a href="https://m.me/TWOJ_PROFIL_FB" target="_blank" class="btn btn-messenger">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.434 5.503 3.678 7.199V22l3.455-1.896A11.4 11.4 0 0012 20.485c5.523 0 10-4.144 10-9.242C22 6.145 17.523 2 12 2zm1.076 12.444l-2.548-2.72-4.97 2.72 5.467-5.804 2.612 2.72 4.905-2.72-5.466 5.804z"/></svg>
-        Rezerwuję agregat — napisz na Messengerze
+      <a href="https://wa.me/48726035714?text=Cze%C5%9B%C4%87%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20agregat%20Pro-Gen%203500.%20Prosz%C4%99%20o%20dane%20do%20przelewu." target="_blank" class="btn btn-whatsapp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+        Rezerwuję agregat — napisz na WhatsApp
       </a>
       <p class="cta-microcopy">Bez zobowiązań • Odpiszemy w kilka minut • Sprawdzimy dostępność</p>
       <div class="cta-divider">— lub zadzwoń —</div>
-      <a href="tel:+48XXXXXXXXX" class="cta-phone">+48 XXX XXX XXX</a>
-      <p class="cta-hours">pon–pt 8:00–18:00, sob 9:00–14:00</p>
+      <a href="tel:+48726035714" class="cta-phone">+48 726 035 714</a>
+      <p class="cta-hours">Zadzwoń lub wyślij SMS · pon–pt 8:00–18:00, sob 9:00–14:00</p>
     </div>
     <div class="cta-steps">
       <div class="cta-step"><span class="step-num">1</span><span>Napisz lub zadzwoń</span></div>
       <div class="cta-step-arrow">→</div>
       <div class="cta-step"><span class="step-num">2</span><span>Otrzymasz dane do przelewu</span></div>
       <div class="cta-step-arrow">→</div>
-      <div class="cta-step"><span class="step-num">3</span><span>Płacisz przelewem lub BLIK</span></div>
+      <div class="cta-step"><span class="step-num">3</span><span>Płacisz przelewem na konto</span></div>
       <div class="cta-step-arrow">→</div>
-      <div class="cta-step"><span class="step-num">4</span><span>Wysyłka kurierem + FV</span></div>
+      <div class="cta-step"><span class="step-num">4</span><span>Wysyłka 48h + FV</span></div>
     </div>
     <div class="cta-methods">
       <div class="cta-method"><span class="dot"></span> Przelew bankowy</div>
-      <div class="cta-method"><span class="dot"></span> BLIK</div>
-      <div class="cta-method"><span class="dot"></span> Wysyłka kurierem 24h</div>
-      <div class="cta-method"><span class="dot"></span> FV VAT 23%</div>
+      <div class="cta-method"><span class="dot"></span> Wysyłka 48h</div>
+      <div class="cta-method"><span class="dot"></span> + dostawa od 50 zł</div>
+      <div class="cta-method"><span class="dot"></span> Faktura VAT dla firm</div>
     </div>
   </div>
 </section>
@@ -1023,9 +1189,9 @@ footer {
 <div class="trust-bar">
   <div class="trust-inner">
     <div class="trust-item"><span class="icon">✅</span> Fabrycznie nowy</div>
-    <div class="trust-item"><span class="icon">📦</span> Wysyłka w 24h</div>
-    <div class="trust-item"><span class="icon">🛡️</span> Gwarancja 24 mies.</div>
-    <div class="trust-item"><span class="icon">🧾</span> Faktura VAT</div>
+    <div class="trust-item"><span class="icon">📦</span> Wysyłka w 48h</div>
+    <div class="trust-item"><span class="icon">🛡️</span> Gwarancja 12 mies.</div>
+    <div class="trust-item"><span class="icon">🧾</span> Faktura VAT dla firm</div>
     <div class="trust-item"><span class="icon">🔥</span> Likwidacja magazynu</div>
   </div>
 </div>
@@ -1033,8 +1199,13 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p>© 2026 · Agregaty prądotwórcze Pro-Gen · Ożarów Mazowiecki</p>
-    <p style="margin-top: 6px; font-size: 12px;">Sprzedaż prowadzona na podstawie JDG · NIP na życzenie</p>
+    <p style="font-weight: 700; color: var(--text-secondary); margin-bottom: 8px; font-size: 14px;">Beoni Poland Sp. z o.o.</p>
+    <p>ul. Włodarzewska 45D, 02-384 Warszawa</p>
+    <p style="margin-top: 4px;">
+      tel: <a href="tel:+48726035714" style="color: var(--text-secondary); text-decoration: none;">+48 726 035 714</a> · 
+      e-mail: <a href="mailto:pl.info@beonigroup.com" style="color: var(--text-secondary); text-decoration: none;">pl.info@beonigroup.com</a>
+    </p>
+    <p style="margin-top: 12px; font-size: 12px;">© 2026 Beoni Poland Sp. z o.o. · Wszelkie prawa zastrzeżone</p>
   </div>
 </footer>
 
