@@ -842,6 +842,246 @@ footer {
 }
 .hero-inner > * { animation: fadeUp 0.7s ease-out both; }
 .hero-inner > :nth-child(2) { animation-delay: 0.15s; }
+
+/* --- POWER CALCULATOR --- */
+.calculator-section { background: linear-gradient(180deg, var(--bg-dark) 0%, #111215 100%); }
+.calc-wrap { max-width: 1100px; margin: 0 auto; }
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.calc-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+.calc-category h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+.calc-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.calc-item:hover { color: var(--text-primary); }
+.calc-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.2s;
+}
+.calc-item input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.calc-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+}
+.calc-item small {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.calc-result {
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(245,158,11,0.1);
+}
+.calc-result-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.calc-result-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.calc-result-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.calc-result-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.calc-result-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--success);
+  transition: width 0.4s ease, background 0.4s ease;
+}
+.calc-result-bar-fill.warning { background: var(--accent); }
+.calc-result-bar-fill.danger { background: var(--danger); }
+.calc-result-cap { font-size: 12px; color: var(--text-muted); }
+.calc-status {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--success);
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.5;
+}
+.calc-status.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: var(--accent);
+}
+.calc-status.danger {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--danger);
+}
+.calc-presets {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.calc-presets-label {
+  width: 100%;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.calc-preset { font-size: 13px !important; padding: 8px 14px !important; }
+@media (max-width: 900px) { .calc-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .calc-result-row { grid-template-columns: 1fr; gap: 16px; } }
+
+/* --- FAQ --- */
+.faq-section { background: linear-gradient(180deg, #111215 0%, var(--bg-dark) 100%); }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.faq-item:hover { border-color: rgba(245,158,11,0.3); }
+.faq-item[open] {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+.faq-item summary {
+  padding: 18px 24px;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-primary);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 28px;
+  color: var(--accent);
+  font-weight: 300;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p {
+  padding: 0 24px 20px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.faq-item p strong { color: var(--text-primary); }
+@media (max-width: 600px) {
+  .faq-item summary { font-size: 15px; padding: 16px 18px; }
+  .faq-item p { padding: 0 18px 18px; font-size: 14px; }
+}
+
+/* --- STICKY CTA --- */
+.sticky-cta {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: #25D366;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  z-index: 100;
+  animation: pulse-cta 2.5s ease-in-out infinite;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.sticky-cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: #1ebe57;
+}
+@keyframes pulse-cta {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 0 rgba(37,211,102,0.5); }
+  50% { box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 14px rgba(37,211,102,0); }
+}
+@media (max-width: 600px) {
+  body { padding-bottom: 80px; }
+  .sticky-cta {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1003,6 +1243,123 @@ footer {
         <h3>🎪 Eventy, food trucki, camping</h3>
         <p>Mobilne zasilanie na imprezy plenerowe, kamping, targi. Kompaktowy, na kółkach, gotowy do transportu. Ideał na sezon letni 2026.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- POWER CALCULATOR -->
+<section class="section calculator-section" id="kalkulator">
+  <div class="section-header">
+    <h2>CO REALNIE PODŁĄCZYSZ?</h2>
+    <p>Awaria prądu, plac budowy, weekend na działce — sprawdź konkretnie ile sprzętu zasilisz na raz. <strong>3 000W mocy ciągłej, 3 500W szczytowo</strong> na rozruch silników (lodówki, pompy, sprężarki).</p>
+  </div>
+  <div class="calc-wrap">
+    <div class="calc-grid">
+      <div class="calc-category">
+        <h3>🏠 Awaryjne zasilanie domu</h3>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-fridge" data-w="200" data-startup="600">
+          <span>Lodówka <small>(200W, rozruch 600W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-co" data-w="80">
+          <span>Sterownik pieca CO <small>(80W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-router" data-w="20">
+          <span>Router + modem <small>(20W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-tv" data-w="100">
+          <span>Telewizor LED <small>(100W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-led" data-w="60">
+          <span>5× lampa LED <small>(60W łącznie)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-microwave" data-w="800">
+          <span>Mikrofalówka <small>(800W)</small></span>
+        </label>
+      </div>
+      <div class="calc-category">
+        <h3>🔧 Warsztat / budowa</h3>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-grinder" data-w="2200">
+          <span>Szlifierka kątowa 230 <small>(2200W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-drill" data-w="800" data-startup="1500">
+          <span>Wiertarka udarowa <small>(800W, rozruch 1500W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-saw" data-w="1500" data-startup="3000">
+          <span>Pilarka tarczowa <small>(1500W, rozruch 3000W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-halogen" data-w="200">
+          <span>2× lampa halogenowa <small>(200W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-compressor" data-w="1200" data-startup="3500">
+          <span>Sprężarka 50L <small>(1200W, rozruch 3500W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-pump" data-w="500" data-startup="1500">
+          <span>Pompa wody 1" <small>(500W, rozruch 1500W)</small></span>
+        </label>
+      </div>
+      <div class="calc-category">
+        <h3>🏡 Działka / camping</h3>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-camp-fridge" data-w="60">
+          <span>Lodówka turystyczna <small>(60W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-garden-light" data-w="100">
+          <span>Oświetlenie ogrodowe <small>(100W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-mower" data-w="1500" data-startup="2200">
+          <span>Kosiarka elektryczna <small>(1500W, rozruch 2200W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-deep-pump" data-w="800" data-startup="2400">
+          <span>Pompa głębinowa <small>(800W, rozruch 2400W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-grill" data-w="2000">
+          <span>Grill elektryczny <small>(2000W)</small></span>
+        </label>
+        <label class="calc-item">
+          <input type="checkbox" id="dev-audio" data-w="80">
+          <span>Sprzęt audio <small>(80W)</small></span>
+        </label>
+      </div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-row">
+        <div class="calc-result-block">
+          <div class="calc-result-label">Pobór ciągły</div>
+          <div class="calc-result-value" id="calc-running">0 W</div>
+          <div class="calc-result-bar"><div class="calc-result-bar-fill" id="calc-running-bar"></div></div>
+          <div class="calc-result-cap">z 3 000 W mocy ciągłej</div>
+        </div>
+        <div class="calc-result-block">
+          <div class="calc-result-label">Skok rozruchowy</div>
+          <div class="calc-result-value" id="calc-startup">0 W</div>
+          <div class="calc-result-bar"><div class="calc-result-bar-fill" id="calc-startup-bar"></div></div>
+          <div class="calc-result-cap">z 3 500 W mocy szczytowej</div>
+        </div>
+      </div>
+      <div class="calc-status" id="calc-status">Zaznacz urządzenia, żeby zobaczyć obciążenie agregatu.</div>
+    </div>
+    <div class="calc-presets">
+      <p class="calc-presets-label">Szybkie scenariusze:</p>
+      <button class="btn btn-secondary calc-preset" data-preset="house" type="button">🏠 Awaryjne zasilanie domu</button>
+      <button class="btn btn-secondary calc-preset" data-preset="construction" type="button">🔧 Plac budowy</button>
+      <button class="btn btn-secondary calc-preset" data-preset="cottage" type="button">🏡 Działka weekend</button>
+      <button class="btn btn-secondary calc-preset" data-preset="clear" type="button">🧹 Wyczyść</button>
     </div>
   </div>
 </section>
@@ -1169,6 +1526,56 @@ footer {
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section faq-section" id="faq">
+  <div class="section-header">
+    <h2>NAJCZĘŚCIEJ ZADAWANE PYTANIA</h2>
+    <p>Odpowiadamy zanim zapytasz — najczęstsze wątpliwości klientów przed zakupem agregatu</p>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Czy zasili pompę głębinową na działce?</summary>
+      <p>Tak — jeśli pompa ma do 1 100W mocy nominalnej. Pompy głębinowe mają wysoki prąd rozruchowy (~3× mocy ciągłej), więc pompa 800W wymaga ok. 2 400W na rozruch. Nasz agregat daje <strong>3 500W szczytowo</strong>, więc pompy 0,55–1,1 kW pójdą bez problemu. Sprawdź tabliczkę znamionową swojej pompy.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Czy mogę uruchomić agregat w garażu lub piwnicy?</summary>
+      <p><strong>Nie.</strong> Silnik spalinowy emituje tlenek węgla — śmiertelnie toksyczny i bezwonny. Agregat zawsze stawiaj na zewnątrz, minimum 3 metry od okien i drzwi. To zasada bezpieczeństwa dotycząca każdego agregatu spalinowego, nie tylko naszego — zignorowanie kosztuje życie.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Co z gwarancją? Co jeśli się zepsuje po pół roku?</summary>
+      <p>Standardowa <strong>gwarancja 12 miesięcy</strong> obejmuje wady fabryczne. Reklamacje obsługujemy w Beoni Poland Sp. z o.o. (Warszawa) — zwykle wymiana lub naprawa w ciągu 14 dni. Dla osób fizycznych obowiązuje też ustawowy 14-dniowy zwrot konsumencki bez podania przyczyny przy zakupie zdalnym. Faktura VAT 23% standardowo.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Jaką benzynę tankować — Pb95 czy Pb98?</summary>
+      <p><strong>Pb95</strong> jest w pełni wystarczająca i tak zaleca producent silnika. Pb98 nie szkodzi, ale nie daje praktycznej korzyści. Unikaj benzyny z etanolem powyżej E10 (oznaczonej E85). Nie zostawiaj paliwa w zbiorniku na dłużej niż 30 dni — opróżnij przed zimą lub dolej stabilizatora.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Ile pali na godzinę i ile mnie kosztuje praca?</summary>
+      <p>Średnio <strong>~1,5 l/h przy 75% obciążenia</strong> (typowe użycie awaryjne). Pełen 15-litrowy zbiornik = 10 godzin pracy. Przy małym obciążeniu (router + lodówka + lampa) zużycie spada do ~0,8 l/h, czyli zbiornik wystarcza na ~18 godzin. Koszt przy Pb95 6,80 zł/l: ok. 10 zł/h pełnego obciążenia, ~5 zł/h przy zasilaniu awaryjnym domu.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Czy będzie głośny dla sąsiada?</summary>
+      <p>To agregat z silnikiem spalinowym — nie inwerter typu "cichy 50 dB". Rzeczywisty hałas to <strong>~70 dB z 7 metrów</strong> (porównywalny z odkurzaczem). Postaw 5–10 metrów od okien sąsiada, na podłożu absorbującym (trawa, gruba mata gumowa, paleta) — będzie OK. Do nocnej pracy w środku osiedla raczej się nie nadaje.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Czy mogę go zostawić w garażu na zimę?</summary>
+      <p>Tak, pod dwoma warunkami: <strong>(1)</strong> opróżnij zbiornik paliwa lub dolej stabilizatora paliwa, <strong>(2)</strong> opróżnij gaźnik (otwórz kurek spustowy paliwa i pozwól silnikowi zgasnąć z braku paliwa). Olej możesz zostawić — wymienisz go przed pierwszym uruchomieniem wiosną. Trzymaj w suchym miejscu, najlepiej pod plandeką lub plastikowym pokrowcem.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Czy potrzebuję uziemienia?</summary>
+      <p>Dla zwykłego użycia (podłączasz urządzenie kablem do gniazdka agregatu) — <strong>nie</strong>. Uziemienie jest wymagane tylko gdy podłączasz agregat na stałe do instalacji domowej przez przełącznik sieć/agregat (transferswitch). Wtedy potrzebny elektryk z uprawnieniami SEP.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Akumulator do elektrycznego startu — jaki kupić?</summary>
+      <p>Standardowy akumulator <strong>12V o pojemności 7–9 Ah</strong> (typu kosiarkowego) — koszt ok. 150 zł w sklepach motoryzacyjnych albo Allegro. Agregat sam go ładuje przez wyjście 12V/8.3A, więc raz dokupiony i zapomniany. Bez akumulatora odpalasz ręcznie linką — działa identycznie dobrze, tylko wymaga jednego mocnego pociągnięcia.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Jak szybko dotrze przesyłka?</summary>
+      <p>Wysyłka kurierem <strong>w 48 h</strong> od zaksięgowania wpłaty. Dostawa kurierem zwykle 1–2 dni robocze (DPD/InPost/GLS w zależności od regionu). Standardowo total: 3–5 dni od zamówienia. Przy zamówieniach z piątku po 14:00 — wysyłka w poniedziałek. Koszt kuriera 200 zł / dla 3+ szt dostawa GRATIS.</p>
+    </details>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="zamow">
   <div class="cta-box">
@@ -1225,6 +1632,92 @@ footer {
     <p style="margin-top: 12px; font-size: 12px;">© 2026 Beoni Poland Sp. z o.o. · Wszelkie prawa zastrzeżone</p>
   </div>
 </footer>
+
+<!-- STICKY CTA -->
+<a href="https://wa.me/48726035713?text=Cze%C5%9B%C4%87%2C%20chc%C4%99%20zam%C3%B3wi%C4%87%20agregat%20Pro-Gen%203500.%20Prosz%C4%99%20o%20dane%20do%20przelewu." target="_blank" class="sticky-cta" aria-label="Napisz na WhatsApp i zamów agregat">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+  <span>Rezerwuję — 899 zł</span>
+</a>
+
+<script>
+(function() {
+  const checkboxes = document.querySelectorAll('.calc-item input[type="checkbox"]');
+  const runningEl = document.getElementById('calc-running');
+  const startupEl = document.getElementById('calc-startup');
+  const runningBar = document.getElementById('calc-running-bar');
+  const startupBar = document.getElementById('calc-startup-bar');
+  const statusEl = document.getElementById('calc-status');
+  if (!checkboxes.length || !runningEl) return;
+  const RUNNING_CAP = 3000;
+  const STARTUP_CAP = 3500;
+  const presets = {
+    house: ['dev-fridge', 'dev-co', 'dev-router', 'dev-tv', 'dev-led'],
+    construction: ['dev-grinder', 'dev-halogen'],
+    cottage: ['dev-deep-pump', 'dev-garden-light', 'dev-camp-fridge', 'dev-audio'],
+    clear: []
+  };
+  function fmt(n) { return n.toLocaleString('pl-PL') + ' W'; }
+  function update() {
+    let running = 0;
+    let maxDelta = 0;
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        const w = parseInt(cb.dataset.w) || 0;
+        const startup = parseInt(cb.dataset.startup) || w;
+        running += w;
+        const delta = startup - w;
+        if (delta > maxDelta) maxDelta = delta;
+      }
+    });
+    const peak = running + maxDelta;
+    runningEl.textContent = fmt(running);
+    startupEl.textContent = fmt(peak);
+    const runningPct = Math.min(100, (running / RUNNING_CAP) * 100);
+    const startupPct = Math.min(100, (peak / STARTUP_CAP) * 100);
+    runningBar.style.width = runningPct + '%';
+    startupBar.style.width = startupPct + '%';
+    runningBar.classList.toggle('warning', running > RUNNING_CAP * 0.8 && running <= RUNNING_CAP);
+    runningBar.classList.toggle('danger', running > RUNNING_CAP);
+    startupBar.classList.toggle('warning', peak > STARTUP_CAP * 0.8 && peak <= STARTUP_CAP);
+    startupBar.classList.toggle('danger', peak > STARTUP_CAP);
+    let status, statusClass;
+    if (running === 0) {
+      status = 'Zaznacz urządzenia, żeby zobaczyć obciążenie agregatu.';
+      statusClass = '';
+    } else if (peak > STARTUP_CAP) {
+      status = '⚠️ Za duże obciążenie — szczytowo ' + fmt(peak) + ' przekracza 3 500W. Wyłącz część urządzeń lub uruchamiaj kolejno (najpierw silniki, potem resztę).';
+      statusClass = 'danger';
+    } else if (running > RUNNING_CAP) {
+      status = '⚠️ Obciążenie ciągłe ' + fmt(running) + ' przekracza 3 000W. Wyłącz część urządzeń.';
+      statusClass = 'danger';
+    } else if (running > RUNNING_CAP * 0.8) {
+      status = '🟡 Wysokie obciążenie (' + Math.round(runningPct) + '%) — agregat poradzi, ale unikaj długiej pracy na maks.';
+      statusClass = 'warning';
+    } else {
+      status = '✅ Wszystko zmieści się — zostaje jeszcze ' + fmt(RUNNING_CAP - running) + ' zapasu mocy ciągłej.';
+      statusClass = '';
+    }
+    statusEl.textContent = status;
+    statusEl.className = 'calc-status' + (statusClass ? ' ' + statusClass : '');
+  }
+  checkboxes.forEach(cb => cb.addEventListener('change', update));
+  document.querySelectorAll('.calc-preset').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const preset = this.dataset.preset;
+      checkboxes.forEach(cb => cb.checked = false);
+      const ids = presets[preset] || [];
+      ids.forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb) cb.checked = true;
+      });
+      update();
+      const calc = document.getElementById('kalkulator');
+      if (calc) calc.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+  update();
+})();
+</script>
 
 </body>
 </html>
